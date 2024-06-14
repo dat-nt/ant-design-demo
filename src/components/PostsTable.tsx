@@ -145,25 +145,32 @@ const PostsTable: React.FC = () => {
                 <EditPost post={editingPost} onClose={handleCloseEdit} />
             )}
 
-            <Typography.Title level={3} style={{ textAlign: 'center', marginBottom: '16px' }}>Posts Table</Typography.Title>
+            <Typography.Title
+                level={3}
+                style={{ textAlign: 'center', marginBottom: '16px' }}
+            >Posts Table</Typography.Title>
+
             <Table
                 dataSource={currentPosts}
                 columns={columns}
                 pagination={false}
-                scroll={{ y: 400 }}
+                scroll={{ y: 320 }}
                 rowKey="id"
             />
-            <div style={{ display: 'flex', justifyContent: 'space-between', padding: '16px' }}>
-                <Pagination
-                    current={page}
-                    total={posts.length}
-                    pageSize={rowsPerPage}
-                    showSizeChanger
-                    onShowSizeChange={(_current, size) => handleChangeRowsPerPage(size)}
-                    onChange={handleChangePage}
-                    pageSizeOptions={['5', '10', '20', `${posts.length}`]}
-                />
-            </div>
+
+            <Pagination
+                style={{ marginTop: '16px', textAlign: 'right', padding: '16px' }}
+                current={page}
+                total={posts.length}
+                pageSize={rowsPerPage}
+                showQuickJumper
+                showSizeChanger
+                onShowSizeChange={(_current, size) => handleChangeRowsPerPage(size)}
+                onChange={handleChangePage}
+                pageSizeOptions={['5', '10', '20', `${posts.length}`]}
+
+            />
+
         </Fragment>
     );
 };
